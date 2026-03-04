@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Employee
+from .models import Employee, Attendance
 from django.core.validators import validate_email
 
 
@@ -9,12 +9,10 @@ class EmployeeSerializer(serializers.ModelSerializer):
         model = Employee
         fields = "__all__"
 
-    # Validate Email Format
     def validate_email(self, value):
 
         validate_email(value)
 
-        # Check duplicate email
         if Employee.objects.filter(email=value).exists():
             raise serializers.ValidationError(
                 "Employee with this email already exists."
@@ -22,7 +20,6 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
         return value
 
-    # Validate duplicate employee ID
     def validate_employee_id(self, value):
 
         if Employee.objects.filter(employee_id=value).exists():
@@ -31,3 +28,10 @@ class EmployeeSerializer(serializers.ModelSerializer):
             )
 
         return value
+
+
+class AttendanceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Attendance
+        fields = "__all__"
