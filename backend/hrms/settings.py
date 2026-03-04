@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 import os
 
@@ -86,7 +87,6 @@ WSGI_APPLICATION = 'hrms.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 
-import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
@@ -113,6 +113,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
