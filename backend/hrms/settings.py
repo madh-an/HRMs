@@ -103,7 +103,7 @@ SIMPLE_JWT = {
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get("DATABASE_URL")
+        default=os.environ.get("DATABASE_URL") 
     )
 }
 
@@ -120,7 +120,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator' ,
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
